@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-title-zh="隐私政策 - 家庭记账" data-title-en="Privacy Policy - Family Ledger">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>隐私政策 · Privacy Policy — 家庭记账 Family Ledger</title>
+<title>隐私政策 - 家庭记账 · Privacy Policy - Family Ledger</title>
+
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
+<script src="lang.js"></script>
 </head>
 <body>
-<main>
-<header class="top"><a href="./">家庭记账 · Family Ledger</a></header>
-<nav>
-  <a href="#zh">中文</a>
-  <a href="#english">English</a>
-  <a href="delete-account.html">删除账号 / Delete account</a>
-</nav>
-<h1>隐私政策 / Privacy Policy</h1>
-<p class="muted">生效日期 / Effective date：2026-11-16</p>
-<h2 id="zh">中文</h2>
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="./"><svg class="" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M12 23 24 13l12 10" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 21v13a1.5 1.5 0 0 0 1.5 1.5h14a1.5 1.5 0 0 0 1.5-1.5V21" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M20 26h8M20 30.5h8" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg><span><span data-l="zh">家庭记账</span><span data-l="en">Family Ledger</span></span></a>
+  <nav class="links"><a class="nav-link" href="privacy.html" aria-current="page"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<main class="wrap">
+<div data-l="zh">
+<h1>隐私政策</h1>
+<span class="date">生效日期：2026-11-16</span>
 <p>“家庭记账”（以下简称“本应用”）重视你的隐私。本政策说明本应用会处理哪些信息、存放在哪里，以及你如何管理这些信息。</p>
-<h3>一句话概括</h3>
+<h2>一句话概括</h2>
 <p><b>你的记账数据只保存在你的手机上，以及你自己架设的家庭服务器上。开发者没有服务器来接收你的数据，也看不到你的任何数据。</b> 本应用没有广告，不含统计分析或崩溃上报等第三方追踪工具。</p>
-<h3>本应用处理的信息</h3>
-<table>
+<h2>本应用处理的信息</h2>
+<div class="table"><table>
 <tr><th>信息</th><th>用途</th><th>存放位置</th></tr>
 <tr><td>收支记录、分类、账户、预算、周期记账规则</td><td>记账功能</td><td>你的手机；开启同步后，也存放在你的家庭服务器上</td></tr>
 <tr><td>附加到账目的照片（小票、发票等）</td><td>账目附件</td><td>同上</td></tr>
@@ -29,8 +32,8 @@
 <tr><td>导入的微信、支付宝账单文件</td><td>导入账单</td><td>文件发送到你的家庭服务器解析，导入后只保留生成的账目</td></tr>
 <tr><td>高级版购买凭证</td><td>让同一家庭的成员共享高级版</td><td>你的家庭服务器</td></tr>
 <tr><td>应用锁密码</td><td>打开应用前验证身份</td><td>只保存在你的手机上（不可逆的哈希值），不会同步</td></tr>
-</table>
-<h3>权限</h3>
+</table></div>
+<h2>权限</h2>
 <p>本应用只在你使用相应功能时调用以下能力：</p>
 <ul>
 <li><b>相机</b>：拍摄小票、发票。照片只用于你正在记的那笔账。</li>
@@ -38,14 +41,14 @@
 <li><b>面容 ID / 指纹</b>：解锁应用锁。验证由系统完成，本应用拿不到你的生物特征信息。</li>
 <li><b>网络 / 本地网络</b>：与你的家庭服务器同步。本应用只连接你在设置中填写的服务器地址。</li>
 </ul>
-<h3>第三方服务</h3>
+<h2>第三方服务</h2>
 <ul>
 <li><b>应用商店支付</b>：通过 Google Play 或 App Store 购买高级版时，付款由商店处理，适用其各自的隐私政策。本应用不会接触你的支付信息。</li>
 <li>除此之外，本应用不向任何第三方发送数据。</li>
 </ul>
-<h3>数据传输安全</h3>
+<h2>数据传输安全</h2>
 <p>同步数据只在你的手机和你自己的服务器之间传输。如果服务器地址以 <code>http://</code> 开头，数据在传输时不会加密，建议只在家庭局域网内使用，或为服务器配置 <code>https://</code>。</p>
-<h3>你的权利与数据删除</h3>
+<h2>你的权利与数据删除</h2>
 <ul>
 <li><b>删除单条数据</b>：在应用内直接删除账目、照片、分类等。</li>
 <li><b>删除自己的账号</b>：在“我的 → 账号与家庭 → 删除账号”中输入登录密码即可删除。账号信息（用户名、密码、购买凭证）会从服务器删除；你记过的账属于家庭共用的账本，会保留给家人。你是家庭中最后一位成员时，服务器上的全部账目和照片会一并清空。删除时可选择同时清除手机上的数据。</li>
@@ -53,18 +56,21 @@
 <li><b>删除全部数据</b>：卸载本应用会删除手机上的全部数据。服务器上的数据由服务器管理者（通常就是你或你的家人）自行删除。</li>
 <li>开发者不持有你的数据，因此无法替你查询、导出或删除数据。</li>
 </ul>
-<h3>儿童</h3>
+<h2>儿童</h2>
 <p>本应用不面向 13 岁以下儿童，也不会有意收集儿童的个人信息。</p>
-<h3>政策变更</h3>
+<h2>政策变更</h2>
 <p>如果本政策有更新，我们会在此页面公布新版本，并更新生效日期。</p>
-<h3>联系我们</h3>
+<h2>联系我们</h2>
 <p>如有疑问，请联系：<a href="mailto:crrc76@163.com">crrc76@163.com</a></p>
-<h2 id="english">English</h2>
+</div>
+<div data-l="en">
+<h1>Privacy Policy</h1>
+<span class="date">Effective date: 2026-11-16</span>
 <p>Family Ledger (“the app”) respects your privacy. This policy explains what information the app handles, where it is stored, and how you control it.</p>
-<h3>In short</h3>
+<h2>In short</h2>
 <p><b>Your data is stored only on your phone and on the home server you set up yourself. The developer runs no server that receives your data and cannot see any of it.</b> The app shows no ads and contains no third-party analytics, crash reporting or other tracking tools.</p>
-<h3>Information the app handles</h3>
-<table>
+<h2>Information the app handles</h2>
+<div class="table"><table>
 <tr><th>Information</th><th>Purpose</th><th>Where it is stored</th></tr>
 <tr><td>Income and expense records, categories, accounts, budgets, recurring rules</td><td>Bookkeeping</td><td>Your phone; also on your home server if you turn on sync</td></tr>
 <tr><td>Photos attached to records (receipts, invoices)</td><td>Attachments</td><td>Same as above</td></tr>
@@ -72,8 +78,8 @@
 <tr><td>WeChat / Alipay bill files you import</td><td>Bill import</td><td>Sent to your home server to be read; only the resulting records are kept</td></tr>
 <tr><td>Premium purchase receipts</td><td>Sharing Premium with your family</td><td>Your home server</td></tr>
 <tr><td>App lock PIN</td><td>Verifying it’s you before the app opens</td><td>Only on your phone (as a one-way hash), never synced</td></tr>
-</table>
-<h3>Permissions</h3>
+</table></div>
+<h2>Permissions</h2>
 <p>The app uses these capabilities only when you use the related feature:</p>
 <ul>
 <li><b>Camera</b>: to photograph receipts and invoices. Photos are used only for the record you are editing.</li>
@@ -81,14 +87,14 @@
 <li><b>Face ID / fingerprint</b>: to unlock the app lock. The system performs the check; the app never receives your biometric data.</li>
 <li><b>Network / local network</b>: to sync with your home server. The app connects only to the server address you enter.</li>
 </ul>
-<h3>Third-party services</h3>
+<h2>Third-party services</h2>
 <ul>
 <li><b>App store payments</b>: when you buy Premium through Google Play or the App Store, the store processes the payment under its own privacy policy. The app never sees your payment details.</li>
 <li>The app sends no data to any other third party.</li>
 </ul>
-<h3>Security in transit</h3>
+<h2>Security in transit</h2>
 <p>Synced data travels only between your phone and your own server. If the server address starts with <code>http://</code>, data is not encrypted in transit; we recommend using it only on your home network, or setting up <code>https://</code> on your server.</p>
-<h3>Your choices and deleting data</h3>
+<h2>Your choices and deleting data</h2>
 <ul>
 <li><b>Delete individual items</b>: delete records, photos, categories and more directly in the app.</li>
 <li><b>Delete your account</b>: go to Me → Account &amp; family → Delete account and enter your password. Your account details (username, password, purchase receipt) are removed from the server; records you added belong to the shared family ledger and stay with your family. If you are the last member of the family, all records and photos on the server are erased as well. You can also choose to erase the data on your phone.</li>
@@ -96,13 +102,18 @@
 <li><b>Delete everything</b>: uninstalling the app deletes all data on your phone. Data on the server is deleted by whoever manages the server (usually you or your family).</li>
 <li>The developer does not hold your data, so we cannot look up, export or delete it for you.</li>
 </ul>
-<h3>Children</h3>
+<h2>Children</h2>
 <p>The app is not directed at children under 13 and does not knowingly collect their personal information.</p>
-<h3>Changes</h3>
+<h2>Changes</h2>
 <p>If this policy changes, we will publish the new version on this page and update the effective date.</p>
-<h3>Contact</h3>
+<h2>Contact</h2>
 <p>Questions? Contact: <a href="mailto:crrc76@163.com">crrc76@163.com</a></p>
-<footer>© 2026 家庭记账 · Family Ledger</footer>
+</div>
 </main>
+<footer><div class="foot">
+  <span class="copy">© 2026 <span data-l="zh">家庭记账</span><span data-l="en">Family Ledger</span></span>
+  <a href="./"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
 </body>
 </html>
