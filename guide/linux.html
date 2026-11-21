@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="Linux / 树莓派 - 部署教程" data-title-en="Linux / Raspberry Pi - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linux / 树莓派 - 部署教程 · Linux / Raspberry Pi - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html" aria-current="page"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>在 Linux / 树莓派上安装</h1>
+<p class="lead">用 Docker 运行，几条命令就好。镜像同时支持 x86-64 和 ARM64（树莓派 4/5 请装 64 位系统）。</p>
+
+<ol class="steps">
+  <li><b>安装 Docker</b>
+    <p>还没装的话，执行官方安装脚本：</p>
+<pre><code>curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER   # 之后重新登录，免得每次都加 sudo</code></pre>
+  </li>
+  <li><b>写配置文件</b>
+<pre><code>mkdir -p ~/coinroof && cd ~/coinroof
+cat > docker-compose.yml &lt;&lt;'EOF'
+services:
+  coinroof:
+    image: ghcr.io/crrc76/coinroof-server:latest
+    container_name: coinroof
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Asia/Shanghai
+EOF</code></pre>
+  </li>
+  <li><b>启动</b>
+<pre><code>docker compose up -d
+curl http://localhost:8000/api/health   # 看到 "ok":true 就成功了</code></pre>
+    <p class="muted">开了防火墙（如 ufw）的话，放行 8000 端口：<code>sudo ufw allow 8000/tcp</code>。</p>
+  </li>
+  <li><b>连接手机</b>
+    <p>按<a href="connect.html">连接手机</a>操作，地址是这台机器的局域网 IP（<code>hostname -I</code> 可以查看）。</p>
+  </li>
+</ol>
+
+<h2>升级</h2>
+<pre><code>cd ~/coinroof
+docker compose pull && docker compose up -d</code></pre>
+<p>想全自动升级，可以再加一个 <a href="https://containrrr.dev/watchtower/">Watchtower</a> 容器。不过自动升级出问题时你不会马上知道，建议还是看到 App 里的提示后手动升级。</p>
+
+<h2>数据与备份</h2>
+<p>全部数据在 <code>~/coinroof/data</code>。见<a href="backup.html">备份与恢复</a>。</p>
+</div>
+
+<div data-l="en">
+<h1>Install on Linux / Raspberry Pi</h1>
+<p class="lead">Run it with Docker in a few commands. The image supports both x86-64 and ARM64 (on a Raspberry Pi 4/5, use a 64-bit OS).</p>
+
+<ol class="steps">
+  <li><b>Install Docker</b>
+    <p>If you don’t have it yet, use the official install script:</p>
+<pre><code>curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER   # log in again afterwards so you don't need sudo</code></pre>
+  </li>
+  <li><b>Create the config file</b>
+<pre><code>mkdir -p ~/coinroof && cd ~/coinroof
+cat > docker-compose.yml &lt;&lt;'EOF'
+services:
+  coinroof:
+    image: ghcr.io/crrc76/coinroof-server:latest
+    container_name: coinroof
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Europe/London
+EOF</code></pre>
+  </li>
+  <li><b>Start it</b>
+<pre><code>docker compose up -d
+curl http://localhost:8000/api/health   # "ok":true means it's working</code></pre>
+    <p class="muted">If a firewall such as ufw is on, allow port 8000: <code>sudo ufw allow 8000/tcp</code>.</p>
+  </li>
+  <li><b>Connect your phone</b>
+    <p>Follow <a href="connect.html">Connect phones & family</a>. The address is this machine’s LAN IP (see <code>hostname -I</code>).</p>
+  </li>
+</ol>
+
+<h2>Updating</h2>
+<pre><code>cd ~/coinroof
+docker compose pull && docker compose up -d</code></pre>
+<p>For fully automatic updates you can add a <a href="https://containrrr.dev/watchtower/">Watchtower</a> container. But if an automatic update goes wrong you won’t notice right away, so we suggest updating by hand when the app tells you a new version is out.</p>
+
+<h2>Data and backups</h2>
+<p>All data is in <code>~/coinroof/data</code>. See <a href="backup.html">Backup & restore</a>.</p>
+</div>
+    <div class="pager"><a class="prev" href="qnap.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a><a class="next" href="connect.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

@@ -104,3 +104,59 @@ footer { border-top: 1px solid var(--line); }
 .foot { max-width: 960px; margin: 0 auto; padding: 24px 20px 40px; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: 14px; }
 .foot a { color: var(--muted); }
 .foot .copy { margin-right: auto; }
+
+/* ---------- 部署教程 ---------- */
+.guide { max-width: 1080px; margin: 0 auto; padding: 32px 20px 72px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+.side { position: sticky; top: 84px; align-self: start; display: flex; flex-direction: column; gap: 2px; font-size: 15px; }
+.side a { color: var(--muted); padding: 6px 12px; border-radius: 8px; }
+.side a:hover { background: var(--accent-soft); color: var(--fg); text-decoration: none; }
+.side a[aria-current] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.side-group { font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--muted); padding: 16px 12px 4px; text-transform: uppercase; }
+.doc { min-width: 0; max-width: 760px; }
+.doc h2 { border-top: 0; padding-top: 0; margin-top: 36px; }
+@media (max-width: 860px) {
+  .guide { grid-template-columns: 1fr; gap: 16px; padding-top: 20px; }
+  .side { position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .side a { border: 1px solid var(--line); padding: 4px 10px; font-size: 14px; }
+  .side-group { display: none; }
+}
+
+/* 步骤 */
+ol.steps { list-style: none; padding: 0; margin: 18px 0; counter-reset: step; }
+ol.steps > li { position: relative; padding: 0 0 18px 48px; margin: 0; counter-increment: step; }
+ol.steps > li::before {
+  content: counter(step); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 15px; display: grid; place-items: center;
+}
+ol.steps > li:not(:last-child)::after { content: ""; position: absolute; left: 14px; top: 34px; bottom: 4px; width: 2px; background: var(--line); }
+ol.steps > li > b:first-child { display: block; font-size: 17px; margin-bottom: 2px; }
+
+/* 提示框 */
+.tip, .warn { border-radius: 12px; padding: 12px 16px; margin: 16px 0; font-size: 15px; }
+.tip { background: var(--accent-soft); }
+.warn { background: #fff4e5; color: #6b4300; }
+@media (prefers-color-scheme: dark) { .warn { background: #33270f; color: #f3d39c; } }
+.tip p, .warn p { margin: 4px 0; }
+
+/* 代码 */
+pre { position: relative; background: #0f1716; color: #d7e3e0; border-radius: 12px; padding: 14px 16px; overflow-x: auto; font-size: 13.5px; line-height: 1.6; }
+pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
+.copy-btn { position: absolute; top: 8px; right: 8px; border: 1px solid #2c3a37; background: #1a2624; color: #b9c9c5; border-radius: 6px; font-size: 12px; padding: 2px 8px; cursor: pointer; }
+kbd { font: 13px/1 ui-monospace, SFMono-Regular, Menlo, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 2px 6px; background: var(--card); }
+
+/* 选择设备的卡片 */
+.choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin: 16px 0; }
+.choice { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; color: var(--fg); box-shadow: var(--shadow); }
+.choice:hover { border-color: var(--accent); text-decoration: none; }
+.choice b { display: block; font-size: 16px; margin-bottom: 2px; }
+.choice span.d { color: var(--muted); font-size: 14px; line-height: 1.6; display: block; }
+.choice .badge { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 6px; padding: 0 7px; margin-left: 6px; }
+.dl { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff !important; padding: 10px 18px; border-radius: 10px; font-weight: 600; margin: 4px 8px 4px 0; }
+.dl:hover { text-decoration: none; filter: brightness(1.08); }
+
+/* 上一篇 / 下一篇 */
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); }
+.pager a { flex: 1; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; color: var(--fg); background: var(--card); }
+.pager a:hover { border-color: var(--accent); text-decoration: none; }
+.pager .next { text-align: right; }
+.pager small { display: block; color: var(--muted); font-size: 12px; }

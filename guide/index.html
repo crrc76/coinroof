@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="开始之前 - 部署教程" data-title-en="Before you start - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开始之前 - 部署教程 · Before you start - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./" aria-current="page"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>部署家庭服务器</h1>
+<p class="lead">家庭服务器保存全家共用的账本，家人的手机通过它同步。它装在你家里一台常开的设备上，数据不经过开发者。</p>
+
+<div class="tip">
+<p><b>只是自己记账？</b>不需要服务器。直接用 App 就行，数据保存在手机上。</p>
+<p><b>要和家人共用账本、多台手机同步</b>，才需要装家庭服务器。服务器免费；家庭共享需要高级版，家中任一成员购买后全家可用。</p>
+</div>
+
+<h2>第一步：选一台设备</h2>
+<p>服务器要一直开着，家人才能随时同步（关机时大家照常记账，开机后自动补上）。按你家有的设备选：</p>
+<div class="choices">
+  <a class="choice" href="synology.html"><b>群晖 NAS<span class="badge">推荐</span></b><span class="d">本来就 24 小时开着，省电省心。</span></a>
+  <a class="choice" href="qnap.html"><b>威联通 NAS<span class="badge">推荐</span></b><span class="d">同上，用 Container Station 安装。</span></a>
+  <a class="choice" href="windows.html"><b>Windows 电脑</b><span class="d">下载一个程序，双击就能用。适合家里有台常开的台式机。</span></a>
+  <a class="choice" href="mac.html"><b>Mac 电脑</b><span class="d">下载、拖进“应用程序”，打开即用。Mac mini 很合适。</span></a>
+  <a class="choice" href="linux.html"><b>Linux / 树莓派</b><span class="d">用 Docker 一条命令启动。适合熟悉命令行的用户。</span></a>
+</div>
+
+<h2>第二步：装好以后</h2>
+<div class="choices">
+  <a class="choice" href="connect.html"><b>连接手机、添加家人</b><span class="d">App 里点“自动查找”，找到服务器后创建账号。</span></a>
+  <a class="choice" href="remote.html"><b>在外面也能同步</b><span class="d">不在家时也想同步？用 Tailscale 安全地连回家。</span></a>
+  <a class="choice" href="backup.html"><b>备份与恢复</b><span class="d">数据都在一个文件夹里，复制一份就是备份。</span></a>
+  <a class="choice" href="upgrade.html"><b>升级服务器</b><span class="d">有新版本时 App 会提醒，升级不影响数据。</span></a>
+</div>
+
+<h2>需要知道的几件事</h2>
+<ul>
+  <li><b>数据只在你家里。</b>账目和照片保存在服务器设备上，以及每位家人的手机上。开发者没有任何服务器接收你的数据。</li>
+  <li><b>手机和服务器要在同一个网络。</b>默认只在家里的 WiFi 下同步；想在外面同步，看<a href="remote.html">这篇</a>。</li>
+  <li><b>一台服务器对应一个家庭。</b>第一个连接的人成为管理员，再由管理员添加家人。</li>
+</ul>
+</div>
+
+<div data-l="en">
+<h1>Set up your home server</h1>
+<p class="lead">The home server keeps your family’s shared ledger, and everyone’s phone syncs through it. It runs on an always-on device in your home, and your data never passes through the developer.</p>
+
+<div class="tip">
+<p><b>Just tracking your own spending?</b> You don’t need a server. Use the app on its own and your data stays on your phone.</p>
+<p><b>To share one ledger with your family and sync across phones</b>, set up a home server. The server is free; family sharing needs Premium, and when one family member buys it, everyone gets it.</p>
+</div>
+
+<h2>Step 1: Pick a device</h2>
+<p>The server should stay on so your family can sync any time. (While it’s off, everyone can keep recording; changes sync once it’s back.) Choose based on what you have:</p>
+<div class="choices">
+  <a class="choice" href="synology.html"><b>Synology NAS<span class="badge">Recommended</span></b><span class="d">Already on 24/7 and uses little power.</span></a>
+  <a class="choice" href="qnap.html"><b>QNAP NAS<span class="badge">Recommended</span></b><span class="d">Same idea, installed with Container Station.</span></a>
+  <a class="choice" href="windows.html"><b>Windows PC</b><span class="d">Download one program and double-click it. Great for a desktop PC that stays on.</span></a>
+  <a class="choice" href="mac.html"><b>Mac</b><span class="d">Download, drag into Applications, open. A Mac mini works well.</span></a>
+  <a class="choice" href="linux.html"><b>Linux / Raspberry Pi</b><span class="d">Start it with one Docker command. For people comfortable with a terminal.</span></a>
+</div>
+
+<h2>Step 2: After it’s installed</h2>
+<div class="choices">
+  <a class="choice" href="connect.html"><b>Connect phones & family</b><span class="d">Tap “Find my home server” in the app, then create accounts.</span></a>
+  <a class="choice" href="remote.html"><b>Sync away from home</b><span class="d">Use Tailscale to reach home securely while you’re out.</span></a>
+  <a class="choice" href="backup.html"><b>Backup & restore</b><span class="d">All data lives in one folder. Copy it and you have a backup.</span></a>
+  <a class="choice" href="upgrade.html"><b>Updating the server</b><span class="d">The app tells you when there’s a new version. Updating keeps your data.</span></a>
+</div>
+
+<h2>Good to know</h2>
+<ul>
+  <li><b>Your data stays at home.</b> Records and photos are stored on the server device and on each family member’s phone. The developer runs no server that receives your data.</li>
+  <li><b>Phones and the server must be on the same network.</b> By default the app syncs on your home Wi‑Fi only. To sync while you’re out, see <a href="remote.html">this guide</a>.</li>
+  <li><b>One server, one family.</b> The first person to connect becomes the admin and then adds the rest of the family.</li>
+</ul>
+</div>
+    <div class="pager"><a class="next" href="windows.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

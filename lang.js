@@ -17,6 +17,21 @@
   }
   apply(pick());
   document.addEventListener('DOMContentLoaded', function () {
+    // 代码块加“复制”按钮
+    document.querySelectorAll('pre').forEach(function (pre) {
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.type = 'button';
+      btn.textContent = root.getAttribute('data-lang') === 'zh' ? '复制' : 'Copy';
+      btn.addEventListener('click', function () {
+        var code = pre.querySelector('code') || pre;
+        navigator.clipboard.writeText(code.innerText).then(function () {
+          btn.textContent = root.getAttribute('data-lang') === 'zh' ? '已复制' : 'Copied';
+          setTimeout(function () { btn.textContent = root.getAttribute('data-lang') === 'zh' ? '复制' : 'Copy'; }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
     var t = root.getAttribute('data-title-' + root.getAttribute('data-lang'));
     if (t) document.title = t;
     document.querySelectorAll('.lang [data-set]').forEach(function (b) {

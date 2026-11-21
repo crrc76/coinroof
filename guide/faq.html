@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="常见问题 - 部署教程" data-title-en="Troubleshooting - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>常见问题 - 部署教程 · Troubleshooting - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html" aria-current="page"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>常见问题</h1>
+
+<h2 id="not-found">App 找不到服务器 / 连接超时</h2>
+<ol>
+  <li><b>确认服务器在运行：</b>电脑版窗口显示“运行中”；NAS 上容器在运行。</li>
+  <li><b>确认在同一个 WiFi：</b>手机和服务器要连同一个路由器。不要连“访客 WiFi”，访客网络通常不让设备互相访问。</li>
+  <li><b>手机开了 VPN 或代理？</b>VPN、加速器、代理类 App 可能会把局域网的连接也接管走，导致连不上家里的服务器。请暂时关闭，或在它的设置里让局域网地址直连（常叫“绕过局域网”）。</li>
+  <li><b>电脑防火墙拦住了：</b>见下一条。</li>
+  <li><b>手动输入地址：</b>在连接页面输入服务器窗口上显示的地址，比如 <code>192.168.1.10</code>。</li>
+  <li><b>用浏览器测试：</b>在手机浏览器里打开 <code>http://服务器地址:8000/api/health</code>。能看到 <code>"ok":true</code> 说明网络是通的，问题在 App 这边；打不开说明网络或防火墙有问题。</li>
+</ol>
+
+<h2 id="firewall">Windows 防火墙拦住了</h2>
+<ol>
+  <li>打开<b>设置 → 隐私和安全性 → Windows 安全中心 → 防火墙和网络保护</b>；</li>
+  <li>点<b>允许应用通过防火墙 → 更改设置</b>；</li>
+  <li>找到 <b>CoinroofServer</b>，勾选<b>专用</b>，确定。列表里没有的话，点“允许其他应用”添加它。</li>
+</ol>
+<p>同时确认 Windows 把家里的网络识别为“专用网络”：设置 → 网络和 Internet → WLAN（或以太网）→ 点当前网络 → 网络配置文件类型选<b>专用网络</b>。</p>
+
+<h2>服务器关机或休眠了怎么办</h2>
+<p>没关系。大家照常在手机上记账，数据先存在手机里，服务器开机后自动同步，不会丢。电脑版可以勾选“运行时不让电脑自动休眠”。</p>
+
+<h2>电脑的 IP 地址变了</h2>
+<p>路由器重启后，电脑的 IP 可能会变，手机就连不上了。在 App 里点<b>我的 → 重新连接 → 自动查找</b>即可。想一劳永逸，可以在路由器设置里给这台电脑“固定 IP”（常叫 DHCP 静态分配、IP 与 MAC 绑定）。</p>
+
+<h2>提示端口 8000 被占用</h2>
+<p>说明电脑上已有其他程序用了 8000 端口。可以关掉那个程序；或者编辑服务器窗口提示里给出的 <code>settings.json</code>，把 <code>"port": 8000</code> 改成别的数字（如 8100），重新打开服务器。之后手机连接时地址要带上端口，如 <code>192.168.1.10:8100</code>。</p>
+
+<h2>杀毒软件报毒 / 打不开</h2>
+<p>电脑版是用 PyInstaller 打包的 Python 程序，个别杀毒软件可能误报。程序只在你的电脑上运行家庭服务器，除了每天从本网站读取一次版本号、更新时从 GitHub 下载新版，不会联系任何地方。可以把它加入杀毒软件的信任列表。</p>
+
+<h2>一台服务器能给几个家庭用？</h2>
+<p>一个。一台服务器就是一个家庭的账本。如果要给父母家单独用，请在他们家另装一台。</p>
+
+<h2>数据安全吗？</h2>
+<ul>
+  <li>数据只保存在你家的服务器和家人的手机上，开发者看不到。详见<a href="../privacy.html">隐私政策</a>。</li>
+  <li>手机和服务器在家里用 HTTP 通信，没有加密，所以不要把服务器直接暴露到公网。需要在外面用时，请用 <a href="remote.html">Tailscale</a>。</li>
+  <li>密码在服务器上只保存不可逆的哈希值。</li>
+</ul>
+
+<h2>还有问题？</h2>
+<p>写信到 <a href="mailto:crrc76@163.com">crrc76@163.com</a>。请说明服务器装在什么设备上，以及具体的提示文字或截图。</p>
+</div>
+
+<div data-l="en">
+<h1>Troubleshooting</h1>
+
+<h2 id="not-found">The app can’t find the server / connection times out</h2>
+<ol>
+  <li><b>Check the server is running:</b> the Windows / Mac window says “Running”; on a NAS, the container is running.</li>
+  <li><b>Check you’re on the same Wi‑Fi:</b> the phone and the server must use the same router. Avoid guest Wi‑Fi, which usually blocks devices from reaching each other.</li>
+  <li><b>VPN or proxy on the phone?</b> VPN, “accelerator” or proxy apps can take over local network traffic too, so the phone can’t reach your home server. Turn it off for now, or set it to bypass local addresses (often called “bypass LAN”).</li>
+  <li><b>Computer firewall:</b> see the next question.</li>
+  <li><b>Enter the address by hand:</b> type the address shown in the server window, such as <code>192.168.1.10</code>, on the connect screen.</li>
+  <li><b>Test in a browser:</b> on the phone, open <code>http://server-address:8000/api/health</code>. If you see <code>"ok":true</code>, the network is fine and the problem is in the app. If it doesn’t load, it’s the network or a firewall.</li>
+</ol>
+
+<h2 id="firewall">Windows Firewall is blocking it</h2>
+<ol>
+  <li>Open <b>Settings → Privacy & security → Windows Security → Firewall & network protection</b>.</li>
+  <li>Click <b>Allow an app through firewall → Change settings</b>.</li>
+  <li>Find <b>CoinroofServer</b> and tick <b>Private</b>, then OK. If it’s not listed, add it with “Allow another app”.</li>
+</ol>
+<p>Also make sure Windows treats your home network as private: Settings → Network & internet → Wi‑Fi (or Ethernet) → your network → set Network profile type to <b>Private network</b>.</p>
+
+<h2>What if the server is off or asleep?</h2>
+<p>No problem. Everyone keeps recording on their phones; the data is stored on the phone and syncs automatically once the server is back. Nothing is lost. In the Windows / Mac app you can turn on “Keep the computer awake”.</p>
+
+<h2>The computer’s IP address changed</h2>
+<p>After a router restart, the computer may get a new IP and phones can’t reach it. In the app, tap <b>Me → Reconnect → Find my home server</b>. To stop this happening, give the computer a fixed IP in your router settings (often called a DHCP reservation or static lease).</p>
+
+<h2>“Port 8000 is used by another program”</h2>
+<p>Another program on the computer is already using port 8000. Close that program, or edit the <code>settings.json</code> shown in the server window: change <code>"port": 8000</code> to another number (such as 8100) and reopen the server. Phones then need the port in the address, such as <code>192.168.1.10:8100</code>.</p>
+
+<h2>Antivirus flags it or won’t let it open</h2>
+<p>The Windows / Mac app is a Python program packaged with PyInstaller, which a few antivirus products mistakenly flag. It only runs your home server. Apart from reading the latest version number from this website once a day and downloading updates from GitHub, it contacts nothing. You can add it to your antivirus allow list.</p>
+
+<h2>Can one server serve several families?</h2>
+<p>No, one server is one family’s ledger. For your parents’ household, set up a separate server at their home.</p>
+
+<h2>Is my data safe?</h2>
+<ul>
+  <li>Data is stored only on your home server and your family’s phones; the developer can’t see it. See the <a href="../privacy.html">privacy policy</a>.</li>
+  <li>At home, phones talk to the server over unencrypted HTTP, so don’t expose the server directly to the internet. To use it while you’re out, use <a href="remote.html">Tailscale</a>.</li>
+  <li>The server stores passwords only as one-way hashes.</li>
+</ul>
+
+<h2>Still stuck?</h2>
+<p>Email <a href="mailto:crrc76@163.com">crrc76@163.com</a>. Tell us what device the server runs on and include the exact message or a screenshot.</p>
+</div>
+    <div class="pager"><a class="prev" href="upgrade.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

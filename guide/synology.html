@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="群晖 NAS - 部署教程" data-title-en="Synology NAS - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>群晖 NAS - 部署教程 · Synology NAS - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html" aria-current="page"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>在群晖 NAS 上安装</h1>
+<p class="lead">NAS 本来就一直开着，用来跑家庭服务器最省心。下面以 DSM 7.2 的 Container Manager 为例。</p>
+<p class="muted">需要支持 Container Manager 的机型（大多数 x86 和较新的 ARM 机型都支持）。</p>
+
+<ol class="steps">
+  <li><b>安装 Container Manager</b>
+    <p>打开<b>套件中心</b>，搜索 <b>Container Manager</b>，安装。</p>
+  </li>
+  <li><b>建一个文件夹放数据</b>
+    <p>打开 <b>File Station</b>，在 <code>docker</code> 共享文件夹里新建文件夹 <code>coinroof</code>，再在里面新建 <code>data</code> 文件夹。全家的账目和照片都会保存在这里。</p>
+  </li>
+  <li><b>创建项目</b>
+    <p>打开 <b>Container Manager → 项目 → 新增</b>：</p>
+    <ul>
+      <li>项目名称：<code>coinroof</code></li>
+      <li>路径：选择刚才建的 <code>docker/coinroof</code></li>
+      <li>来源：<b>创建 docker-compose.yml</b>，把下面的内容粘贴进去</li>
+    </ul>
+<pre><code>services:
+  coinroof:
+    image: ghcr.io/crrc76/coinroof-server:latest
+    container_name: coinroof
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Asia/Shanghai</code></pre>
+    <p>一路点“下一步”，最后勾选<b>创建完成后启动项目</b>，点“完成”。第一次会下载镜像，稍等一两分钟。</p>
+  </li>
+  <li><b>确认运行</b>
+    <p>项目状态显示“运行中”就好了。在电脑浏览器里打开 <code>http://NAS的IP:8000/api/health</code>，看到 <code>"ok":true</code> 说明服务器正常。</p>
+    <p class="muted">如果开了 DSM 的防火墙，记得在“控制面板 → 安全性 → 防火墙”里放行 8000 端口。</p>
+  </li>
+  <li><b>连接手机</b>
+    <p>打开手机上的 Coinroof，按<a href="connect.html">连接手机</a>操作。地址就是 NAS 的 IP。</p>
+  </li>
+</ol>
+
+<h2>升级与备份</h2>
+<ul>
+  <li><b>升级：</b>Container Manager → 项目 → 选中 coinroof → 操作 → <b>停止</b>，再点<b>构建</b>，会下载最新镜像并重新启动。数据在 data 文件夹里，不受影响。详见<a href="upgrade.html">升级服务器</a>。</li>
+  <li><b>备份：</b>用 Hyper Backup 备份 <code>docker/coinroof</code> 文件夹即可。见<a href="backup.html">备份与恢复</a>。</li>
+</ul>
+</div>
+
+<div data-l="en">
+<h1>Install on a Synology NAS</h1>
+<p class="lead">A NAS is already on around the clock, which makes it the easiest home for your server. These steps use Container Manager on DSM 7.2.</p>
+<p class="muted">Your model needs to support Container Manager (most x86 and newer ARM models do).</p>
+
+<ol class="steps">
+  <li><b>Install Container Manager</b>
+    <p>Open <b>Package Center</b>, search for <b>Container Manager</b> and install it.</p>
+  </li>
+  <li><b>Create a folder for the data</b>
+    <p>In <b>File Station</b>, create a folder <code>coinroof</code> inside the <code>docker</code> shared folder, and a <code>data</code> folder inside that. All of your family’s records and photos will be stored here.</p>
+  </li>
+  <li><b>Create a project</b>
+    <p>Open <b>Container Manager → Project → Create</b>:</p>
+    <ul>
+      <li>Project name: <code>coinroof</code></li>
+      <li>Path: the <code>docker/coinroof</code> folder you just made</li>
+      <li>Source: <b>Create docker-compose.yml</b>, and paste this in:</li>
+    </ul>
+<pre><code>services:
+  coinroof:
+    image: ghcr.io/crrc76/coinroof-server:latest
+    container_name: coinroof
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+    environment:
+      - TZ=Europe/London   # your time zone</code></pre>
+    <p>Click Next through the wizard, tick <b>Start the project once it is created</b>, and click Done. The first start downloads the image, which takes a minute or two.</p>
+  </li>
+  <li><b>Check it’s running</b>
+    <p>The project should show “Running”. On a computer, open <code>http://NAS-IP:8000/api/health</code> in a browser; <code>"ok":true</code> means the server is up.</p>
+    <p class="muted">If DSM’s firewall is on, allow port 8000 under “Control Panel → Security → Firewall”.</p>
+  </li>
+  <li><b>Connect your phone</b>
+    <p>Open Coinroof on your phone and follow <a href="connect.html">Connect phones & family</a>. The address is your NAS’s IP.</p>
+  </li>
+</ol>
+
+<h2>Updating and backups</h2>
+<ul>
+  <li><b>Update:</b> Container Manager → Project → select coinroof → Action → <b>Stop</b>, then <b>Build</b>. This downloads the latest image and starts it again. Your data in the data folder is kept. See <a href="upgrade.html">Updating the server</a>.</li>
+  <li><b>Back up:</b> include the <code>docker/coinroof</code> folder in Hyper Backup. See <a href="backup.html">Backup & restore</a>.</li>
+</ul>
+</div>
+    <div class="pager"><a class="prev" href="mac.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a><a class="next" href="qnap.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

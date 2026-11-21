@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="在外面也能同步 - 部署教程" data-title-en="Sync when away from home - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在外面也能同步 - 部署教程 · Sync when away from home - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html" aria-current="page"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>在外面也能同步</h1>
+<p class="lead">默认只有在家里的 WiFi 下才能同步。不在家时照样能记账，回家后自动同步。如果想在外面也随时同步，推荐用 Tailscale。</p>
+
+<div class="warn">
+<p><b>不要</b>在路由器上把 8000 端口直接映射到公网。家庭服务器用的是不加密的 HTTP，直接暴露在公网上，账本数据可能被别人看到。</p>
+</div>
+
+<h2>用 Tailscale（推荐，免费）</h2>
+<p>Tailscale 会在你的手机和家里的服务器之间建一条加密的专用通道，不用改路由器设置。个人使用免费。</p>
+<ol class="steps">
+  <li><b>服务器那台设备装 Tailscale</b>
+    <p>在 <a href="https://tailscale.com/download">tailscale.com/download</a> 下载对应版本（群晖、威联通可在套件中心 / App Center 里搜索 Tailscale），用一个账号登录。</p>
+  </li>
+  <li><b>每台手机装 Tailscale</b>
+    <p>从应用商店安装 Tailscale，<b>用同一个账号</b>登录（家人手机可以用你的账号，或在 Tailscale 后台邀请）。</p>
+  </li>
+  <li><b>记下服务器的 Tailscale 地址</b>
+    <p>在 Tailscale 里能看到服务器设备的地址，形如 <code>100.x.x.x</code>。</p>
+  </li>
+  <li><b>App 里换成这个地址</b>
+    <p>打开 Coinroof → <b>我的 → 重新连接</b>，服务器地址填 <code>100.x.x.x</code>，连接后用原来的账号登录，数据不会丢。</p>
+  </li>
+  <li><b>允许用移动网络同步</b>
+    <p><b>我的 → 同步与备份</b>，关闭<b>仅在 WiFi 下自动同步</b>。</p>
+  </li>
+</ol>
+<p class="muted">在家时，这个地址同样可用，不需要来回切换。</p>
+</div>
+
+<div data-l="en">
+<h1>Sync when you’re away from home</h1>
+<p class="lead">By default the app syncs only on your home Wi‑Fi. You can still record while you’re out, and everything syncs when you get home. If you want to sync from anywhere, we recommend Tailscale.</p>
+
+<div class="warn">
+<p><b>Don’t</b> forward port 8000 on your router to the internet. The home server uses unencrypted HTTP, so exposing it directly could let others see your ledger.</p>
+</div>
+
+<h2>Use Tailscale (recommended, free)</h2>
+<p>Tailscale creates a private, encrypted connection between your phones and your home server, with no router changes. It’s free for personal use.</p>
+<ol class="steps">
+  <li><b>Install Tailscale on the server device</b>
+    <p>Download it from <a href="https://tailscale.com/download">tailscale.com/download</a> (on Synology or QNAP, search for Tailscale in Package Center / App Center) and sign in.</p>
+  </li>
+  <li><b>Install Tailscale on each phone</b>
+    <p>Install Tailscale from your app store and sign in with <b>the same account</b> (family members can use your account, or you can invite them from the Tailscale admin console).</p>
+  </li>
+  <li><b>Note the server’s Tailscale address</b>
+    <p>Tailscale shows the server device’s address, which looks like <code>100.x.x.x</code>.</p>
+  </li>
+  <li><b>Use that address in the app</b>
+    <p>In Coinroof, go to <b>Me → Reconnect</b>, enter <code>100.x.x.x</code> as the server address, and sign in with your existing account. No data is lost.</p>
+  </li>
+  <li><b>Allow syncing on mobile data</b>
+    <p>In <b>Me → Sync & backup</b>, turn off <b>Auto-sync on Wi‑Fi only</b>.</p>
+  </li>
+</ol>
+<p class="muted">The same address works at home too, so you don’t need to switch back and forth.</p>
+</div>
+    <div class="pager"><a class="prev" href="connect.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a><a class="next" href="backup.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

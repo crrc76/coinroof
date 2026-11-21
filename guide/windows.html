@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="Windows 电脑 - 部署教程" data-title-en="Windows PC - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Windows 电脑 - 部署教程 · Windows PC - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html" aria-current="page"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>在 Windows 电脑上安装</h1>
+<p class="lead">下载一个程序，双击运行，就是家庭服务器。不用装别的软件，也不用敲命令。</p>
+<p class="muted">适用于 Windows 10 / 11（64 位）。这台电脑最好一直开着，比如家里的台式机。</p>
+
+<ol class="steps">
+  <li><b>下载</b>
+    <p><a class="dl" href="https://github.com/crrc76/coinroof/releases/latest/download/CoinroofServer-windows.exe">下载 Windows 版</a></p>
+    <p>把下载的 <code>CoinroofServer-windows.exe</code> 放到一个固定的地方，比如“文档”文件夹，不要留在“下载”里以免被误删。</p>
+  </li>
+  <li><b>双击运行</b>
+    <p>第一次打开时，Windows 可能提示“Windows 已保护你的电脑”。这是因为程序还没有购买代码签名证书，并不是病毒。点<b>“更多信息”</b>，再点<b>“仍要运行”</b>。</p>
+  </li>
+  <li><b>允许防火墙访问</b>
+    <p>接着会弹出“Windows 安全中心警报”。勾选<b>“专用网络”</b>，点<b>“允许”</b>。这样家里的手机才能连上它。</p>
+    <p class="muted">没看到这个弹窗、或者点了“取消”？看<a href="faq.html#firewall">常见问题</a>。</p>
+  </li>
+  <li><b>看到“运行中”就成功了</b>
+    <p>窗口里会显示<b>运行中</b>和一个地址（比如 <code>192.168.1.10</code>），手机连接时会用到。</p>
+    <p>建议勾选：</p>
+    <ul>
+      <li><b>开机自动启动</b>：电脑重启后自动运行，不用每次手动打开。</li>
+      <li><b>运行时不让电脑自动休眠</b>：电脑休眠时家人无法同步。只阻止休眠，屏幕照常会关。</li>
+    </ul>
+  </li>
+  <li><b>连接手机</b>
+    <p>打开手机上的 Coinroof，按<a href="connect.html">连接手机</a>操作。</p>
+  </li>
+</ol>
+
+<h2>日常使用</h2>
+<ul>
+  <li><b>关掉窗口不会停止服务器</b>，它只是最小化到任务栏。要真正关闭，点窗口里的<b>“退出服务器”</b>。</li>
+  <li><b>数据在哪：</b>默认在“文档\CoinroofServer”。窗口里点“打开文件夹”就能看到。备份方法见<a href="backup.html">备份与恢复</a>。</li>
+  <li><b>笔记本电脑：</b>合上盖子通常会休眠。可以在“控制面板 → 电源选项 → 选择关闭笔记本计算机盖的功能”里改成“不采取任何操作”。</li>
+  <li><b>有新版本时</b>窗口里会提示，点<b>“立即更新”</b>即可，数据不受影响。</li>
+</ul>
+</div>
+
+<div data-l="en">
+<h1>Install on a Windows PC</h1>
+<p class="lead">Download one program and double-click it. That’s your home server. Nothing else to install, no commands to type.</p>
+<p class="muted">For Windows 10 / 11 (64-bit). Ideally this computer stays on, like a desktop PC at home.</p>
+
+<ol class="steps">
+  <li><b>Download</b>
+    <p><a class="dl" href="https://github.com/crrc76/coinroof/releases/latest/download/CoinroofServer-windows.exe">Download for Windows</a></p>
+    <p>Move <code>CoinroofServer-windows.exe</code> somewhere permanent, such as your Documents folder, rather than leaving it in Downloads where it may get cleaned up.</p>
+  </li>
+  <li><b>Double-click to run</b>
+    <p>The first time, Windows may say “Windows protected your PC”. That’s because the program isn’t code-signed yet; it isn’t a virus. Click <b>More info</b>, then <b>Run anyway</b>.</p>
+  </li>
+  <li><b>Allow it through the firewall</b>
+    <p>Next, a “Windows Security Alert” appears. Tick <b>Private networks</b> and click <b>Allow</b>, so phones at home can reach it.</p>
+    <p class="muted">No alert, or clicked Cancel by mistake? See <a href="faq.html#firewall">Troubleshooting</a>.</p>
+  </li>
+  <li><b>“Running” means it worked</b>
+    <p>The window shows <b>Running</b> and an address (such as <code>192.168.1.10</code>) that phones use to connect.</p>
+    <p>We recommend turning on:</p>
+    <ul>
+      <li><b>Start when I log in</b>, so it runs again after a restart.</li>
+      <li><b>Keep the computer awake</b>. Your family can’t sync while the PC sleeps. This only prevents sleep; the screen still turns off.</li>
+    </ul>
+  </li>
+  <li><b>Connect your phone</b>
+    <p>Open Coinroof on your phone and follow <a href="connect.html">Connect phones & family</a>.</p>
+  </li>
+</ol>
+
+<h2>Day to day</h2>
+<ul>
+  <li><b>Closing the window doesn’t stop the server</b>; it just minimizes to the taskbar. To stop it, click <b>Quit server</b>.</li>
+  <li><b>Where your data lives:</b> by default in “Documents\CoinroofServer”. Click “Open folder” in the window to see it. To back it up, see <a href="backup.html">Backup & restore</a>.</li>
+  <li><b>Laptops</b> usually sleep when the lid closes. Change this in “Control Panel → Power Options → Choose what closing the lid does” to “Do nothing”.</li>
+  <li><b>When a new version is out</b>, the window tells you. Click <b>Update now</b>; your data is kept.</li>
+</ul>
+</div>
+    <div class="pager"><a class="prev" href="./"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a><a class="next" href="mac.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

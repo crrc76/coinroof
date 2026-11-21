@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="连接手机、添加家人 - 部署教程" data-title-en="Connect phones & family - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>连接手机、添加家人 - 部署教程 · Connect phones & family - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html" aria-current="page"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>连接手机、添加家人</h1>
+<p class="lead">服务器装好后，先由一个人连接并创建管理员账号，再由管理员添加家人。</p>
+
+<div class="tip"><p>连接前请确认：手机和服务器连着<b>同一个 WiFi</b>，服务器正在运行。</p></div>
+
+<h2>第一个人：创建家庭</h2>
+<ol class="steps">
+  <li><b>打开连接页面</b>
+    <p>打开 Coinroof，进入<b>我的</b>，点顶部卡片上的<b>连接</b>。</p>
+  </li>
+  <li><b>自动查找服务器</b>
+    <p>点<b>自动查找家里的服务器</b>，一般几秒就能找到。找到多台时，选你刚装的那台。</p>
+    <p>找不到的话，在“服务器地址”里手动输入服务器窗口上显示的地址（比如 <code>192.168.1.10</code>，端口是 8000 时可以不写），再点<b>连接</b>。还是不行，看<a href="faq.html#not-found">常见问题</a>。</p>
+  </li>
+  <li><b>创建管理员账号</b>
+    <p>新服务器上还没有账号，App 会请你创建第一个账号，这个账号就是<b>管理员</b>。填用户名、密码和称呼（比如“爸爸”），完成。</p>
+    <p class="muted">手机上之前单机记过的账、建过的分类和账户，会一起上传到服务器。</p>
+  </li>
+</ol>
+
+<h2>添加家人</h2>
+<ol class="steps">
+  <li><b>管理员添加账号</b>
+    <p>在管理员的手机上：<b>我的 → 账号与家庭 → 家庭成员</b>，点右下角的添加按钮，为家人设置用户名和初始密码。</p>
+  </li>
+  <li><b>家人连接并登录</b>
+    <p>家人在自己的手机上：<b>我的 → 连接 → 自动查找家里的服务器</b>，然后用管理员给的用户名和密码登录。登录后可在“账号与家庭”里修改密码。</p>
+  </li>
+</ol>
+
+<div class="tip">
+<p><b>家庭共享需要高级版。</b>家中任一成员购买后，全家都能同步。还没购买时，账号照样能创建，各自的手机照常记账，购买后自动同步上来。</p>
+</div>
+
+<h2>之后</h2>
+<ul>
+  <li>同步是自动的：记账后几秒内同步，打开 App 时也会同步。在<b>我的 → 同步与备份</b>里可以看到同步状态，也能手动同步。</li>
+  <li>默认只在 WiFi 下自动同步。想在外面也同步，看<a href="remote.html">在外面也能同步</a>。</li>
+  <li>服务器的 IP 变了（比如路由器重启后）？在 App 里点<b>我的 → 重新连接 → 自动查找</b>即可，数据不会丢。</li>
+</ul>
+</div>
+
+<div data-l="en">
+<h1>Connect phones & add your family</h1>
+<p class="lead">Once the server is running, one person connects first and creates the admin account. The admin then adds everyone else.</p>
+
+<div class="tip"><p>Before connecting, make sure your phone and the server are on <b>the same Wi‑Fi</b> and the server is running.</p></div>
+
+<h2>First person: create the family</h2>
+<ol class="steps">
+  <li><b>Open the connect screen</b>
+    <p>Open Coinroof, go to <b>Me</b>, and tap <b>Connect</b> on the top card.</p>
+  </li>
+  <li><b>Find the server</b>
+    <p>Tap <b>Find my home server</b>. It usually takes a few seconds. If several are found, pick the one you just set up.</p>
+    <p>If nothing is found, type the address shown in the server window into “Server address” (such as <code>192.168.1.10</code>; you can leave out the port if it’s 8000) and tap <b>Connect</b>. Still stuck? See <a href="faq.html#not-found">Troubleshooting</a>.</p>
+  </li>
+  <li><b>Create the admin account</b>
+    <p>A new server has no accounts yet, so the app asks you to create the first one. This account is the <b>admin</b>. Enter a username, password and display name (such as “Dad”).</p>
+    <p class="muted">Anything you already recorded on this phone, plus your categories and accounts, is uploaded to the server.</p>
+  </li>
+</ol>
+
+<h2>Add your family</h2>
+<ol class="steps">
+  <li><b>The admin creates accounts</b>
+    <p>On the admin’s phone: <b>Me → Account & family → Family members</b>, tap the add button, and set a username and starting password for each family member.</p>
+  </li>
+  <li><b>Family members connect and sign in</b>
+    <p>On each family member’s phone: <b>Me → Connect → Find my home server</b>, then sign in with the username and password from the admin. They can change their password later under “Account & family”.</p>
+  </li>
+</ol>
+
+<div class="tip">
+<p><b>Family sharing needs Premium.</b> When one family member buys it, everyone can sync. Until then, accounts can still be created and everyone keeps recording on their own phone; it all syncs once Premium is bought.</p>
+</div>
+
+<h2>After that</h2>
+<ul>
+  <li>Syncing is automatic: within seconds of recording, and whenever the app opens. See the status, or sync by hand, in <b>Me → Sync & backup</b>.</li>
+  <li>By default the app syncs automatically on Wi‑Fi only. To sync while you’re out, see <a href="remote.html">Sync away from home</a>.</li>
+  <li>Server’s IP address changed (for example after a router restart)? In the app tap <b>Me → Reconnect → Find my home server</b>. No data is lost.</li>
+</ul>
+</div>
+    <div class="pager"><a class="prev" href="linux.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a><a class="next" href="remote.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>

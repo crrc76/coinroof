@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-title-zh="备份与恢复 - 部署教程" data-title-en="Backup & restore - Setup guide">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>备份与恢复 - 部署教程 · Backup & restore - Setup guide</title>
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../lang.js"></script>
+</head>
+<body>
+<!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
+<header class="bar"><div class="bar-in">
+  <a class="brand" href="../"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
+  <nav class="links"><a class="nav-link" href="../guide/" aria-current="page"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
+  </nav>
+</div></header>
+<div class="guide">
+  <nav class="side" aria-label="Guide">
+    <a href="./"><span data-l="zh">开始之前</span><span data-l="en">Before you start</span></a>
+    <div class="side-group"><span data-l="zh">安装服务器</span><span data-l="en">Install the server</span></div>
+    <a href="windows.html"><span data-l="zh">Windows 电脑</span><span data-l="en">Windows PC</span></a>
+    <a href="mac.html"><span data-l="zh">Mac 电脑</span><span data-l="en">Mac</span></a>
+    <a href="synology.html"><span data-l="zh">群晖 NAS</span><span data-l="en">Synology NAS</span></a>
+    <a href="qnap.html"><span data-l="zh">威联通 NAS</span><span data-l="en">QNAP NAS</span></a>
+    <a href="linux.html"><span data-l="zh">Linux / 树莓派</span><span data-l="en">Linux / Raspberry Pi</span></a>
+    <div class="side-group"><span data-l="zh">使用</span><span data-l="en">Using it</span></div>
+    <a href="connect.html"><span data-l="zh">连接手机、添加家人</span><span data-l="en">Connect phones & family</span></a>
+    <a href="remote.html"><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a>
+    <a href="backup.html" aria-current="page"><span data-l="zh">备份与恢复</span><span data-l="en">Backup & restore</span></a>
+    <a href="upgrade.html"><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a>
+    <a href="faq.html"><span data-l="zh">常见问题</span><span data-l="en">Troubleshooting</span></a>
+  </nav>
+  <main class="doc">
+<div data-l="zh">
+<h1>备份与恢复</h1>
+<p class="lead">全家的账目和照片都在服务器的一个数据文件夹里。复制这个文件夹，就是一份完整备份。</p>
+
+<h2>数据在哪</h2>
+<div class="table"><table>
+  <tr><th>安装方式</th><th>数据文件夹</th></tr>
+  <tr><td>Windows / Mac 电脑版</td><td>窗口里“数据”一栏显示的位置，默认是“文档/CoinroofServer”。点“打开文件夹”可直接打开</td></tr>
+  <tr><td>群晖</td><td><code>docker/coinroof/data</code></td></tr>
+  <tr><td>威联通</td><td><code>Container/coinroof/data</code></td></tr>
+  <tr><td>Linux / 树莓派</td><td><code>~/coinroof/data</code></td></tr>
+</table></div>
+
+<h2>备份</h2>
+<ol class="steps">
+  <li><b>先停止服务器</b>
+    <p>电脑版点“退出服务器”；Docker 版停止容器。正在运行时复制，可能漏掉最近几分钟的改动。</p>
+  </li>
+  <li><b>复制整个数据文件夹</b>
+    <p>复制到 U 盘、移动硬盘或网盘都可以。文件夹里的所有文件都要一起复制（包括 <code>.db-wal</code> 等文件）。</p>
+  </li>
+  <li><b>重新启动服务器</b></li>
+</ol>
+<p>NAS 用户可以直接用群晖 Hyper Backup、威联通 HBS 3 定时备份这个文件夹。</p>
+
+<div class="tip">
+<p><b>每台手机也是一份备份。</b>家人的手机上都保存着全家的账目；在“我的 → 同步与备份”里打开“在 WiFi 下保存全部照片”，照片也会存一份。服务器的硬盘坏了，也能用手机把数据找回来（见下文）。</p>
+</div>
+
+<h2>恢复</h2>
+<h3>从备份文件夹恢复</h3>
+<ul>
+  <li><b>电脑版：</b>把备份文件夹复制回来，在窗口里点“更换位置…”选中它，服务器会重新启动并使用这份数据。</li>
+  <li><b>Docker 版：</b>停止容器，把备份的内容放回 data 文件夹，再启动。</li>
+</ul>
+
+<h3>没有备份？用管理员的手机恢复</h3>
+<ol class="steps">
+  <li><b>重新装好一个空的服务器</b>（按对应的安装教程）。</li>
+  <li><b>用管理员的手机连接</b>
+    <p>我的 → 重新连接 → 自动查找。App 发现服务器是空的，会提示<b>用本机数据恢复服务器</b>。输入管理员密码即可。</p>
+  </li>
+  <li><b>家人重新登录</b>
+    <p>家人用原来的密码登录，他们手机上较新的记录会自动合并上来。</p>
+  </li>
+</ol>
+
+<h2>换一台电脑当服务器</h2>
+<ol>
+  <li>在旧电脑上退出服务器，把数据文件夹复制到新电脑；</li>
+  <li>在新电脑上安装并打开服务器，点“更换位置…”选中这个文件夹；</li>
+  <li>手机上：我的 → 重新连接 → 自动查找，用原来的账号登录。</li>
+</ol>
+</div>
+
+<div data-l="en">
+<h1>Backup & restore</h1>
+<p class="lead">All of your family’s records and photos live in one data folder on the server. Copy that folder and you have a complete backup.</p>
+
+<h2>Where the data is</h2>
+<div class="table"><table>
+  <tr><th>Installed on</th><th>Data folder</th></tr>
+  <tr><td>Windows / Mac app</td><td>Shown under “Data” in the window, by default “Documents/CoinroofServer”. Click “Open folder” to open it</td></tr>
+  <tr><td>Synology</td><td><code>docker/coinroof/data</code></td></tr>
+  <tr><td>QNAP</td><td><code>Container/coinroof/data</code></td></tr>
+  <tr><td>Linux / Raspberry Pi</td><td><code>~/coinroof/data</code></td></tr>
+</table></div>
+
+<h2>Back up</h2>
+<ol class="steps">
+  <li><b>Stop the server first</b>
+    <p>In the app, click “Quit server”; with Docker, stop the container. Copying while it runs may miss the last few minutes of changes.</p>
+  </li>
+  <li><b>Copy the whole data folder</b>
+    <p>To a USB drive, external disk or cloud storage. Copy every file in the folder, including files such as <code>.db-wal</code>.</p>
+  </li>
+  <li><b>Start the server again</b></li>
+</ol>
+<p>On a NAS, you can schedule backups of this folder with Synology Hyper Backup or QNAP HBS 3.</p>
+
+<div class="tip">
+<p><b>Every phone is a backup too.</b> Each family member’s phone keeps all of the family’s records. Turn on “Save all photos on Wi‑Fi” in “Me → Sync & backup” to keep the photos as well. If the server’s disk dies, you can get your data back from a phone (see below).</p>
+</div>
+
+<h2>Restore</h2>
+<h3>From a backup folder</h3>
+<ul>
+  <li><b>Windows / Mac app:</b> copy the backup folder back, click “Change…” in the window and choose it. The server restarts using that data.</li>
+  <li><b>Docker:</b> stop the container, put the backup back into the data folder, and start it again.</li>
+</ul>
+
+<h3>No backup? Restore from the admin’s phone</h3>
+<ol class="steps">
+  <li><b>Set up a new, empty server</b> using the install guide for your device.</li>
+  <li><b>Connect with the admin’s phone</b>
+    <p>Me → Reconnect → Find my home server. The app sees the server is empty and offers <b>Restore server from this device</b>. Enter the admin password.</p>
+  </li>
+  <li><b>Family members sign in again</b>
+    <p>They use their old passwords, and any newer records on their phones merge in automatically.</p>
+  </li>
+</ol>
+
+<h2>Moving the server to another computer</h2>
+<ol>
+  <li>On the old computer, quit the server and copy the data folder to the new computer.</li>
+  <li>On the new computer, install and open the server, click “Change…” and choose that folder.</li>
+  <li>On each phone: Me → Reconnect → Find my home server, and sign in with the same account.</li>
+</ol>
+</div>
+    <div class="pager"><a class="prev" href="remote.html"><small><span data-l="zh">上一篇</span><span data-l="en">Previous</span></small><span data-l="zh">在外面也能同步</span><span data-l="en">Sync when away from home</span></a><a class="next" href="upgrade.html"><small><span data-l="zh">下一篇</span><span data-l="en">Next</span></small><span data-l="zh">升级服务器</span><span data-l="en">Updating the server</span></a></div>
+  </main>
+</div>
+<footer><div class="foot">
+  <span class="copy">© 2026 Coinroof</span>
+  <a href="../"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="../guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="../privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="../delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="mailto:crrc76@163.com">crrc76@163.com</a>
+</div></footer>
+</body>
+</html>
