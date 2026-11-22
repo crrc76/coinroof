@@ -12,7 +12,7 @@
 <!-- 本文件由 tools/site_build.py 生成，请改 tools/site_src/ 后重新生成 -->
 <header class="bar"><div class="bar-in">
   <a class="brand" href="./"><svg viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg-bar" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#26a69a"/><stop offset="1" stop-color="#00695c"/></linearGradient></defs><rect width="48" height="48" rx="12" fill="url(#lg-bar)"/><path d="M10 22 24 10l14 12" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="10.5" fill="#e09a10"/><circle cx="24" cy="31" r="9.1" fill="#ffc12e"/><circle cx="24" cy="31" r="7.5" fill="none" stroke="#e09a10" stroke-width=".9"/><g fill="#b87808" font-family="Arial Rounded MT Bold,Arial,Helvetica,sans-serif" font-weight="700" font-size="12" text-anchor="middle"><text data-l="zh" x="24" y="35.3">¥</text><text data-l="en" x="24" y="35.3">$</text></g></svg><span>Coinroof</span></a>
-  <nav class="links"><a class="nav-link" href="guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="privacy.html" aria-current="page"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <nav class="links"><a class="nav-link" href="guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a class="nav-link" href="privacy.html" aria-current="page"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a class="nav-link" href="terms.html"><span data-l="zh">服务条款</span><span data-l="en">Terms</span></a><a class="nav-link" href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
     <div class="lang" role="group" aria-label="Language"><button type="button" data-set="zh">中文</button><button type="button" data-set="en">EN</button></div>
   </nav>
 </div></header>
@@ -29,7 +29,7 @@
 <tr><td>收支记录、分类、账户、预算、周期记账规则</td><td>记账功能</td><td>你的手机；开启同步后，也存放在你的家庭服务器上</td></tr>
 <tr><td>附加到账目的照片（小票、发票等）</td><td>账目附件</td><td>同上</td></tr>
 <tr><td>家庭成员的用户名和密码</td><td>登录家庭服务器、区分记账人</td><td>家庭服务器（密码只保存不可逆的哈希值）；手机上只保存登录凭证</td></tr>
-<tr><td>导入的微信、支付宝账单文件</td><td>导入账单</td><td>文件发送到你的家庭服务器解析，导入后只保留生成的账目</td></tr>
+<tr><td>导入的账单文件（银行、信用卡、微信、支付宝）</td><td>导入账单</td><td>文件发送到你的家庭服务器解析，导入后只保留生成的账目</td></tr>
 <tr><td>高级版购买凭证</td><td>让同一家庭的成员共享高级版</td><td>你的家庭服务器</td></tr>
 <tr><td>应用锁密码</td><td>打开应用前验证身份</td><td>只保存在你的手机上（不可逆的哈希值），不会同步</td></tr>
 </table></div>
@@ -77,7 +77,7 @@
 <tr><td>Income and expense records, categories, accounts, budgets, recurring rules</td><td>Bookkeeping</td><td>Your phone; also on your home server if you turn on sync</td></tr>
 <tr><td>Photos attached to records (receipts, invoices)</td><td>Attachments</td><td>Same as above</td></tr>
 <tr><td>Family members’ usernames and passwords</td><td>Signing in to your home server; showing who made each record</td><td>Your home server (passwords are stored only as one-way hashes); your phone keeps only a sign-in token</td></tr>
-<tr><td>WeChat / Alipay bill files you import</td><td>Bill import</td><td>Sent to your home server to be read; only the resulting records are kept</td></tr>
+<tr><td>Statement files you import (bank, credit card, WeChat, Alipay)</td><td>Bill import</td><td>Sent to your home server to be read; only the resulting records are kept</td></tr>
 <tr><td>Premium purchase receipts</td><td>Sharing Premium with your family</td><td>Your home server</td></tr>
 <tr><td>App lock PIN</td><td>Verifying it’s you before the app opens</td><td>Only on your phone (as a one-way hash), never synced</td></tr>
 </table></div>
@@ -116,7 +116,7 @@
 </main>
 <footer><div class="foot">
   <span class="copy">© 2026 Coinroof</span>
-  <a href="./"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
+  <a href="./"><span data-l="zh">首页</span><span data-l="en">Home</span></a><a href="guide/"><span data-l="zh">部署教程</span><span data-l="en">Setup guide</span></a><a href="privacy.html"><span data-l="zh">隐私政策</span><span data-l="en">Privacy</span></a><a href="terms.html"><span data-l="zh">服务条款</span><span data-l="en">Terms</span></a><a href="delete-account.html"><span data-l="zh">删除账号</span><span data-l="en">Delete account</span></a>
   <a href="mailto:crrc76@163.com">crrc76@163.com</a>
 </div></footer>
 </body>

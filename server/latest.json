@@ -1,18 +1,18 @@
 {
-  "version": "1.1.1",
+  "version": "1.2.0",
   "notes": {
-    "zh": "服务器改名为 Coinroof 服务器，换了新图标。",
-    "en": "The server is now called Coinroof Server, with a new icon."
+    "zh": "新增导入海外银行、信用卡账单（CSV 按列映射、OFX / QFX），按商户记住分类，自动跳过信用卡还款；英文界面新建家庭时默认分类和账户为英文。需要 Coinroof App 1.0.17 及以上。",
+    "en": "Import bank and credit card statements (CSV with column matching, OFX / QFX), with categories remembered per merchant and credit card payments skipped automatically. New families set up in English get English default categories and accounts. Requires Coinroof app 1.0.17 or later."
   },
   "url": "https://crrc76.github.io/coinroof/guide/upgrade.html",
   "downloads": {
-    "windows": "https://github.com/crrc76/coinroof/releases/download/server-v1.1.1/CoinroofServer-1.1.1-windows.exe",
-    "macos-arm64": "https://github.com/crrc76/coinroof/releases/download/server-v1.1.1/CoinroofServer-1.1.1-macos-arm64.zip",
-    "macos-x64": "https://github.com/crrc76/coinroof/releases/download/server-v1.1.1/CoinroofServer-1.1.1-macos-x64.zip"
+    "windows": "https://github.com/crrc76/coinroof/releases/download/server-v1.2.0/CoinroofServer-1.2.0-windows.exe",
+    "macos-arm64": "https://github.com/crrc76/coinroof/releases/download/server-v1.2.0/CoinroofServer-1.2.0-macos-arm64.zip",
+    "macos-x64": "https://github.com/crrc76/coinroof/releases/download/server-v1.2.0/CoinroofServer-1.2.0-macos-x64.zip"
   },
   "sha256": {
-    "windows": "43a48e78b53872a52ba2bd92baba3231ca4ca6a9b68e818307ea787bb9b04114",
-    "macos-arm64": "4b5d09fe8b15fd2ef6ac4b871f412d5e612a10b16da1dbd7789e05d7cd01acc9",
-    "macos-x64": "7b94a13182214833f41fe6b9d047704f0cc8e446f04da968eec83b01e1891460"
+    "windows": "626f64aff9a3f7b453f40747ab9f83399133c8b89a0927f4334ad1421b8fc3d5",
+    "macos-arm64": "3c4b6f51c44b82c0e7bff65e53824a8675e4f496eca2e4566f8594d1769851bf",
+    "macos-x64": "98757551aca1895e1c1062b6adfc7c23d52aeadd247686172c050e4d5b4cf17a"
   }
 }
